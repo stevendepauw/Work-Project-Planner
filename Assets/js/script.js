@@ -21,4 +21,38 @@ $(function () {
     //
     // TODO: Add code to display the current date in the header of the page.
   });
+
+let today = dayjs().format('dddd, MMM DD [at] hh:mm:ss a');
+let theHour = dayjs().hour();
+// console.log(today);
+// console.log(theHour);
+let timeDisplay = $("#currentDay");
+let taskToSave = $(".saveBtn");
+let timeBlock = $(".time-block"); 
+let ppf = timeBlock;
+
+
+
+// $(".target:nth-child(2)").addClass(“animated bounce”);
+
+// console.log(ppf.nth)
   
+function displayTime() {
+  timeDisplay.text(today);
+}
+
+// function setColor() {
+//   ppf.each(function() {
+//     let hour = $(this.attr("id"));
+
+//     if(theHour > hour) {
+
+//     }
+//   })
+// }
+
+
+// taskToSave.on("click", saveTask);
+
+displayTime();
+setInterval(displayTime, 1000);
