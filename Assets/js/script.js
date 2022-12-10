@@ -22,37 +22,53 @@ $(function () {
     // TODO: Add code to display the current date in the header of the page.
   });
 
-let today = dayjs().format('dddd, MMM DD [at] hh:mm:ss a');
+let today = dayjs().format("dddd, MMM DD");
 let theHour = dayjs().hour();
-// console.log(today);
-// console.log(theHour);
 let timeDisplay = $("#currentDay");
 let taskToSave = $(".saveBtn");
-let timeBlock = $(".time-block"); 
-let ppf = timeBlock;
-
-
+let ppf = $(".description"); 
 
 // $(".target:nth-child(2)").addClass(“animated bounce”);
-
-// console.log(ppf.nth)
   
 function displayTime() {
   timeDisplay.text(today);
 }
 
-// function setColor() {
-//   ppf.each(function() {
-//     let hour = $(this.attr("id"));
+function setColor() {
+  ppf.each(function() {
+    let hour = $(this).attr("id")
 
-//     if(theHour > hour) {
+    if(theHour > hour) {
+      $(this).addClass("past");
+      $(this).removeClass("present");
+    } 
+    else if(theHour == hour) {
+      $(this).addClass("present");
+      $(this).removeClass("future");
+    } 
+    else {
+      $(this).addClass("future");
+      $(this).removeClass("past");
+    } 
+  })
+}
 
-//     }
-//   })
-// }
+// let test = $("#10").val();
+// console.log(test);
 
+$(".saveBtn").on("click", function () {
+  // Get nearby values of the description in JQuery
+  var text = $(this).siblings(".description").val();
+  var time = $(this).siblings(".description").attr("id");
+  console.log(text);
+  console.log(time);
 
+  // Save text in local storage
+  localStorage.setItem(time, text);
+})
 // taskToSave.on("click", saveTask);
 
 displayTime();
 setInterval(displayTime, 1000);
+setColor();
+setInterval(setColor, 60000);
