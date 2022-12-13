@@ -28,31 +28,24 @@ $(function () {
     })
   }
 
-
-  // function saveProjectsToStorage(projects) {
-  //   localStorage.setItem('projects', JSON.stringify(projects));
-  // }
-
-  // function toDos() {
-  //   let toDoList = localStorage.getItem("toDoList");
-  //   if(toDoList) {
-  //     toDoList = JSON.parse(toDoList);
-  //   } else {
-  //     toDoList = [];
-  //   }
-  //   return toDoList;
-  // }
+  function todDos() {
+    ppf.each(function() {
+      let block = $(this).attr("id")
+      $(this).val(localStorage.getItem(block));
+    })
+  }
 
   $(".saveBtn").on("click", function () {
-    var text = $(this).siblings(".description").val();
-    var time = $(this).siblings(".description").attr("id");
+    let text = $(this).siblings(".description").val();
+    let time = $(this).siblings(".description").attr("id");
  
-    localStorage.setItem("text", JSON.stringify(text));
+    localStorage.setItem(time, text);
   })
 
   displayTime();
-  setInterval(displayTime, 60000);
   setColor();
+  todDos();
+  setInterval(displayTime, 60000);
   setInterval(setColor, 60000);   
 });
 
