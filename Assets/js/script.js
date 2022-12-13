@@ -5,10 +5,12 @@ $(function () {
   let taskToSave = $(".saveBtn");
   let ppf = $(".description"); 
   
+  // sets timer at top of page
   function displayTime() {
     timeDisplay.text(today);  
   }
 
+  //changes backgroud color of each time block based on the current hour
   function setColor() {
     ppf.each(function() {
       let hour = $(this).attr("id")
@@ -28,6 +30,7 @@ $(function () {
     })
   }
 
+  // sets the current task for each hour by pulling the stored task from the local storage based on the time blocks id
   function todDos() {
     ppf.each(function() {
       let block = $(this).attr("id")
@@ -35,6 +38,7 @@ $(function () {
     })
   }
 
+  //saves a new to do task into local storage each time the save button is clicked
   $(".saveBtn").on("click", function () {
     let text = $(this).siblings(".description").val();
     let time = $(this).siblings(".description").attr("id");
