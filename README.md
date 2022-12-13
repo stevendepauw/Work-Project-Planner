@@ -7,7 +7,7 @@ The purpose of this project was to modify code to make a daily work planner that
 
 The following images show the web application's appearance and functionality:
 
-![portfolio demo](./assets/images/working-schedule)
+![portfolio demo](./assets/images/working-schedule.jpeg)
 
 ## Installation
 
